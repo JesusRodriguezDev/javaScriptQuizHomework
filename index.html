@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>JavaScript Quiz</title>
+</head>
+<body>
+    <!-- starting page -->
+    <div class="starting-screen">
+        <h1>Coding Quiz Challenge</h1>
+        <p>Try to answer the following code-related questions withing the time limit.  Keep in mind that incorrect answers will penalize your scoretime by 10 seconds</p>
+        <!-- button to start the quiz -->
+        <div class = "start-btn">
+            <button>Start Quiz</button>
+        </div>
+    </div>
+    <!-- questions and answers box -->
+    <div class= "qna-box">
+        <header>
+            <!-- link to high scores -->
+            <div class="high-scores"> <a href="">View High Scores</a></div>
+            <!-- timer -->
+            <div class="timer"> </div>
+        </header>
+        <section>
+            <!-- questions and answers -->
+            <div class="question"></div>
+            <div class="answers-list"></div>
+            <div class="wrong-right"></div>
+        </section>
+    </div>
+
+    <!-- done screen -->
+    <div class="done-screen">
+        <h1>All Done!</h1>
+        <div class="total-score"></div>
+        <form method="POST">
+            <div class="input-box">
+                <label for="initials"></label>
+                <input type="text" name="initials" id="initials"/>
+            </div>
+            <button id="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- high scores screen -->
+    <div>
+        <h1>Highscores</h1>
+        <ul class="score-list"></ul>
+        <div class="hs-buttons">
+            <button id="go-back">Go Back</button>
+            <button id="clear-hs">Clear Highscores</button>
+        </div>
+        
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
