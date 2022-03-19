@@ -1,3 +1,19 @@
+var start_btn = document.querySelector(".start-btn");
+var questions_box = document.querySelector(".qna-box");
+var start_screen = document.querySelector(".starting-screen");
+var high_scores = document.querySelector(".high-scores");
+var timer = document.querySelector(".timer");
+var question = document.querySelector(".question");
+var answers_list = document.querySelector(".answers-list");
+var wrong_right = document.querySelector(".wrong-right");
+var done_screen = document.querySelector(".done-screen");
+var total_score = document.querySelector(".total-score");
+var input_box = document.querySelector(".input-box");
+var score_list = document.querySelector(".score-list");
+var hs_buttons = document.querySelector(".hs-buttons");
+var go_back = document.querySelector("#go-back");
+var clear_hs = document.querySelector("#clear-hs");
+
 var questions = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -49,4 +65,4 @@ var questions = [
             "console.log"
         ] 
     }
-]
+];
