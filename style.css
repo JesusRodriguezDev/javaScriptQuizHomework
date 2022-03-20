@@ -13,6 +13,11 @@ main {
     height: 25vh;
 }
 
+header {
+    display: inline;
+    justify-content: space-between;
+}
+
 .container {
     width: 600px;
     max-width: 80%;
