@@ -20,7 +20,7 @@ var clearScoreEl = document.querySelector("#clear-hs-btn");
 var highScoreLinkEL = document.querySelector("#high-scores");
 
 var score = 0;
-var timeLeft = 60;
+var timeLeft = 70;
 
 renderSavedInitialsAndScore();
 
@@ -136,7 +136,7 @@ function goBack(){
     startingMessage.classList.remove("hide")
     endQuizEl.classList.add("hide");
     score = 0;
-    timeLeft = 60;
+    timeLeft = 70;
 }
 
 clearScoreEl.addEventListener("click", deleteScore);
