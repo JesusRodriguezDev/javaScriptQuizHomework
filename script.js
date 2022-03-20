@@ -138,7 +138,7 @@ function goBack(){
 
 clearScoreEl.addEventListener("click", deleteScore);
 function deleteScore(){
-    scoresListEl.remove();
+    scoresListEl.innerHTML = '';
 }
 
 //questions variables
