@@ -1,18 +1,47 @@
-var start_btn = document.querySelector(".start-btn");
-var questions_box = document.querySelector(".qna-box");
-var start_screen = document.querySelector(".starting-screen");
-var high_scores = document.querySelector(".high-scores");
-var timer = document.querySelector(".timer");
-var question = document.querySelector(".question");
-var answers_list = document.querySelector(".answers-list");
-var wrong_right = document.querySelector(".wrong-right");
-var done_screen = document.querySelector(".done-screen");
-var total_score = document.querySelector(".total-score");
-var input_box = document.querySelector(".input-box");
-var score_list = document.querySelector(".score-list");
-var hs_buttons = document.querySelector(".hs-buttons");
-var go_back = document.querySelector("#go-back");
-var clear_hs = document.querySelector("#clear-hs");
+var startButtonEl = document.querySelector("#start-btn");
+var questionBoxEl = document.querySelector("#question-box");
+var questionEl = document.querySelector('#question');
+var answerButtonsEl = document.querySelector("#answer-list");
+var button1El = document.querySelector("#btn1");
+var button2El = document.querySelector("#btn2");
+var button3El = document.querySelector("#btn3");
+var button4El = document.querySelector("#btn4");
+var wrongCorrectMessage = document.querySelector("#wrong-correct")
+
+// start the game
+startButtonEl.addEventListener("click", startGame);
+function startGame(){
+    console.log("started");
+    startButtonEl.classList.add("hide");
+    questionBoxEl.classList.remove("hide");
+    activeQuestion = 0;
+    questionPicker();
+}
+
+function questionPicker(){
+    displayQuestions(questions[activeQuestion]);
+}
+
+function displayQuestions(question){
+    questionEl.innerHTML = question.question;
+    button1El.innerHTML = question.choices[0];
+    button2El.innerHTML = question.choices[1];
+    button3El.innerHTML = question.choices[2];
+    button4El.innerHTML = question.choices[3];
+    answerButtonsEl.addEventListener("click", answerPicker);
+}
+
+function answerPicker(event){
+    console.log(event.target);
+    var pickedAnswer = event.target.innerHTML;
+    if(pickedAnswer === questions[activeQuestion].answer)  {
+        wrongCorrectMessage.innerHTML = "Correct"
+    }else{
+        wrongCorrectMessage.innerHTML = "Wrong"
+    }
+}
+
+
 
 var questions = [
     {

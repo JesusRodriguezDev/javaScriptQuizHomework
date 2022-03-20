@@ -46,3 +46,8 @@ main {
     display: none;
 }
 
+#question {
+    font-weight: bold;
+    font-size: large;
+}
+
