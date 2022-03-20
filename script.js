@@ -10,11 +10,17 @@ var wrongCorrectMessage = document.querySelector("#wrong-correct")
 var timerEl = document.querySelector("#timer");
 var endQuizEl = document.querySelector("#end-of-quiz");
 var finalScoreEl = document.querySelector("#final-score");
-var initialsInput = document.querySelector("#initals-box");
+var initialsInput = document.querySelector("#initials-box");
 var submitEl = document.querySelector("#submit-btn");
+var scoresScreenEl = document.querySelector("#highscore-screen");
+var scoresListEl = document.querySelector("#scores-list");
+var goBackEl = document.querySelector("#go-back-btn");
+var clearScoreEl = document.querySelector("#clear-hs-btn");
+
 var score = 0;
 var timeLeft = 20;
 
+renderSavedInitialsAndScore();
 
 // start the game
 startButtonEl.addEventListener("click", startQuiz);
@@ -29,12 +35,13 @@ function startQuiz(){
 
 // timer
 function timeCountdown(){
-   setInterval(function(){
+   timerInterval = setInterval(function(){
     if(timeLeft > 0){
         timerEl.textContent = "Time: " + timeLeft;
         timeLeft --;
     } else{
-        timerEl.textContent = "Time: " + 0;
+        timerEl.textContent = "";
+        clearInterval(timerInterval);
         endQuiz();
     }
    }, 1000) ;
@@ -86,14 +93,52 @@ function answerPicker(event){
 
 //function called when the the quiz needs to end
 function endQuiz(){
+    clearInterval(timerInterval);
     questionBoxEl.classList.add("hide"); 
     endQuizEl.classList.remove("hide");
     finalScoreEl.innerHTML = "Your final score is: " + score;
 }
 
-submitEl.addEventListener("click", submitInitials);
-function submitInitials(){
-    console.log("submitted");
+function renderSavedInitialsAndScore(){
+    var initialsEntered = localStorage.getItem("initials");
+    var highScore = localStorage.getItem("finalScore");
+}
+
+submitEl.addEventListener("click", function(event) {
+    event.preventDefault();
+    var initialsEntered = document.querySelector("#initials-box").value;
+    var highScore = score;
+
+    localStorage.setItem("initials", initialsEntered);
+    localStorage.setItem("finalScore", highScore);
+    renderSavedInitialsAndScore();
+
+    endQuizEl.classList.add("hide");
+    scoresScreenEl.classList.remove("hide");
+    addScoresToList();
+
+});
+
+function addScoresToList(){
+    var li = document.createElement('li');
+    var liText = initialsInput.value + "-" + score;
+    li.appendChild(document.createTextNode(liText));
+    scoresListEl.appendChild(li);
+};
+
+goBackEl.addEventListener("click", goBack);
+function goBack(){
+    scoresScreenEl.classList.add("hide");
+    startButtonEl.classList.remove("hide");
+    endQuizEl.classList.add("hide");
+    score = 0;
+    timeLeft = 20;
+    
+}
+
+clearScoreEl.addEventListener("click", deleteScore);
+function deleteScore(){
+    scoresListEl.remove();
 }
 
 //questions variables
