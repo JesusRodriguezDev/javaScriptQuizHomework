@@ -18,6 +18,10 @@ header {
     justify-content: space-between;
 }
 
+#starting-message{
+    text-align: center;
+}
+
 .container {
     width: 600px;
     max-width: 80%;
@@ -58,4 +62,14 @@ header {
 
 .initials{
     display: inline;
+}
+
+#high-scores{
+    color: blue;
+}
+
+#timer{
+    position: fixed;
+    top: 5px;
+    right: 5px;
 }

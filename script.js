@@ -1,4 +1,5 @@
 var startButtonEl = document.querySelector("#start-btn");
+var startingMessage = document.querySelector("#starting-message");
 var questionBoxEl = document.querySelector("#question-box");
 var questionEl = document.querySelector('#question');
 var answerButtonsEl = document.querySelector("#answer-list");
@@ -16,9 +17,10 @@ var scoresScreenEl = document.querySelector("#highscore-screen");
 var scoresListEl = document.querySelector("#scores-list");
 var goBackEl = document.querySelector("#go-back-btn");
 var clearScoreEl = document.querySelector("#clear-hs-btn");
+var highScoreLinkEL = document.querySelector("#high-scores");
 
 var score = 0;
-var timeLeft = 20;
+var timeLeft = 60;
 
 renderSavedInitialsAndScore();
 
@@ -27,6 +29,7 @@ startButtonEl.addEventListener("click", startQuiz);
 function startQuiz(){
     console.log("started");
     startButtonEl.classList.add("hide");
+    startingMessage.classList.add("hide")
     questionBoxEl.classList.remove("hide");
     activeQuestion = 0;
     questionPicker();
@@ -75,7 +78,7 @@ function answerPicker(event){
         console.log(score);
     }else{
         wrongCorrectMessage.innerHTML = "Wrong";
-        timeLeft = timeLeft - 2;
+        timeLeft = timeLeft - 10;
     };
 
 // moves on to the next question as long as there are questions left in the array
@@ -130,15 +133,26 @@ goBackEl.addEventListener("click", goBack);
 function goBack(){
     scoresScreenEl.classList.add("hide");
     startButtonEl.classList.remove("hide");
+    startingMessage.classList.remove("hide")
     endQuizEl.classList.add("hide");
     score = 0;
-    timeLeft = 20;
-    
+    timeLeft = 60;
 }
 
 clearScoreEl.addEventListener("click", deleteScore);
 function deleteScore(){
     scoresListEl.innerHTML = '';
+}
+
+highScoreLinkEL.addEventListener("click", clickOnScoresLink);
+function clickOnScoresLink(){
+    questionBoxEl.classList.add("hide"); 
+    endQuizEl.classList.add("hide");
+    startButtonEl.classList.add("hide");
+    startingMessage.classList.add("hide")
+    scoresScreenEl.classList.remove("hide");
+    clearInterval(timerInterval);
+
 }
 
 //questions variables
