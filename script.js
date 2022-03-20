@@ -8,12 +8,17 @@ var button3El = document.querySelector("#btn3");
 var button4El = document.querySelector("#btn4");
 var wrongCorrectMessage = document.querySelector("#wrong-correct")
 var timerEl = document.querySelector("#timer");
+var endQuizEl = document.querySelector("#end-of-quiz");
+var finalScoreEl = document.querySelector("#final-score");
+var initialsInput = document.querySelector("#initals-box");
+var submitEl = document.querySelector("#submit-btn");
 var score = 0;
 var timeLeft = 20;
 
+
 // start the game
-startButtonEl.addEventListener("click", startGame);
-function startGame(){
+startButtonEl.addEventListener("click", startQuiz);
+function startQuiz(){
     console.log("started");
     startButtonEl.classList.add("hide");
     questionBoxEl.classList.remove("hide");
@@ -22,6 +27,7 @@ function startGame(){
     timeCountdown();
 }
 
+// timer
 function timeCountdown(){
    setInterval(function(){
     if(timeLeft > 0){
@@ -29,15 +35,18 @@ function timeCountdown(){
         timeLeft --;
     } else{
         timerEl.textContent = "Time: " + 0;
+        endQuiz();
     }
    }, 1000) ;
 }
 
+// picks the question to display
 function questionPicker(){
     displayQuestions(questions[activeQuestion]);
 
 }
 
+// populates text in buttons and listens for click
 function displayQuestions(question){
     questionEl.innerHTML = question.question;
     button1El.innerHTML = question.choices[0];
@@ -47,33 +56,47 @@ function displayQuestions(question){
     answerButtonsEl.addEventListener("click", answerPicker);
 }
 
-// use the button that was clicked and compare it to the correct answe
+// uses the event created by button that was clicked
 function answerPicker(event){
     console.log(event.target);
     var pickedAnswer = event.target.innerHTML;
 
 // tell the user if their answer was correct or wrong
     if(pickedAnswer === questions[activeQuestion].answer)  {
-        wrongCorrectMessage.innerHTML = "Correct"
-        score = score + 20
+        wrongCorrectMessage.innerHTML = "Correct";
+        score = score + 20;
         console.log(score);
     }else{
-        wrongCorrectMessage.innerHTML = "Wrong"
+        wrongCorrectMessage.innerHTML = "Wrong";
         timeLeft = timeLeft - 2;
     };
 
+// moves on to the next question as long as there are questions left in the array
     if (questions.length > activeQuestion +1 ) {
         activeQuestion ++;
         questionPicker();
 
+// ends quiz if no more questions are left
     } else {
         console.log("you are out of questions");
+        endQuiz();
     }
     
 }
 
+//function called when the the quiz needs to end
+function endQuiz(){
+    questionBoxEl.classList.add("hide"); 
+    endQuizEl.classList.remove("hide");
+    finalScoreEl.innerHTML = "Your final score is: " + score;
+}
 
+submitEl.addEventListener("click", submitInitials);
+function submitInitials(){
+    console.log("submitted");
+}
 
+//questions variables
 var questions = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -116,7 +139,7 @@ var questions = [
         ] 
     },
     {
-        question:"A very useful too used during development and debugging for printing content to the debugger is:",
+        question:"A very useful tool used during development and debugging for printing content to the debugger is:",
         answer:"console.log",
         choices:[
             "JavaScript",

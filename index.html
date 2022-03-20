@@ -10,9 +10,9 @@
 <body>
     <header>
         <!-- link to high scores -->
-        <div id ="high-scores"> <a href="">View High Scores</a></div>
+        <div id ="high-scores">View Highscores </div>
         <!-- timer -->
-        <div id ="timer">Time</div>
+        <div id ="timer"></div>
     </header>
     <main>
     <!-- starting page -->
@@ -28,10 +28,19 @@
             </div>
             <div id="wrong-correct"></div>
         </div>
+        <div id = "end-of-quiz" class="hide">
+            <h1>All done!</h1>
+            <div id = "final-score"></div>
+            <div id = "initials">
+                <label for="text"> Enter Initials: </label>
+                <input type="text" name="initials" id = "initials-box">
+                <button id = 'submit-btn' class = "btn">Submit</button>
+            </div>
+        </div>
         <div class = "control-buttons">
             <button id = "start-btn" class = "start-btn btn">Start Quiz</button>
-            <button id = "go-back" class = "go-back-btn btn hide">Go Back </button>
-            <button id = "clear-hs" class = "clear-hs-btn btn hide">Clear Highscores</button>
+            <button id = "go-back-btn" class = "go-back-btn btn hide">Go Back </button>
+            <button id = "clear-hs-btn" class = "clear-hs-btn btn hide">Clear Highscores</button>
         </div>
     </div>
 

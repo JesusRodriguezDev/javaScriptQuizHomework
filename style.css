@@ -56,3 +56,6 @@ header {
     font-size: large;
 }
 
+.initials{
+    display: inline;
+}
